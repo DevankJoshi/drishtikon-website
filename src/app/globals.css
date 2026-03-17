@@ -8,16 +8,9 @@
   font-display: swap;
 }
 
-@theme {
-  --color-brand-orange: #d28723;
-  --color-brand-blue: #0055ff;
-  --color-brand-dark: #0a0a0a;
-}
-
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --font-anton: 'NouvelleGrotesquerie', 'Anton', sans-serif;
 }
 
 body {
@@ -44,6 +37,12 @@ li {
 }
 
 @layer utilities {
+  .font-inter,
+  .font-anton,
+  .font-sans {
+    font-family: 'NouvelleGrotesquerie', Arial, Helvetica, sans-serif !important;
+  }
+
   .bg-grain {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
     pointer-events: none;
