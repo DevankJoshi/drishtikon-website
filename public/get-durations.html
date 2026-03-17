@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Audio Durations</title>
+</head>
+<body>
+    <h1>Audio File Durations</h1>
+    <div id="results"></div>
+    <script>
+        const songs = [
+            { file: '/songs/01. DRISHTIKON.wav', name: '01. DRISHTIKON' },
+            { file: '/songs/02. 100TAKGINN!! ft. Bellicose.wav', name: '02. 100TAKGINN!! ft. Bellicose' },
+            { file: '/songs/03. HAADSE ft. Sarthak.wav', name: '03. HAADSE ft. Sarthak' },
+            { file: '/songs/04. GHAFLAT.wav', name: '04. GHAFLAT' },
+            { file: '/songs/05. METAMORPHOSIS ft. Anoushka.wav', name: '05. METAMORPHOSIS ft. Anoushka' },
+            { file: '/songs/Sarkashi ft. Jyeshtha.wav', name: 'Sarkashi ft. Jyeshtha' }
+        ];
+
+        const resultsDiv = document.getElementById('results');
+        let completed = 0;
+
+        songs.forEach(song => {
+            const audio = new Audio();
+            audio.addEventListener('loadedmetadata', () => {
+                const duration = audio.duration;
+                const minutes = Math.floor(duration / 60);
+                const seconds = Math.round(duration % 60);
+                const formattedDuration = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                
+                const p = document.createElement('p');
+                p.innerHTML = `<strong>${song.name}</strong>: ${formattedDuration} (${duration.toFixed(2)}s)`;
+                resultsDiv.appendChild(p);
+                
+                completed++;
+                if (completed === songs.length) {
+                    const copyButton = document.createElement('button');
+                    copyButton.textContent = 'Copy as JSON';
+                    copyButton.onclick = copyAsJson;
+                    resultsDiv.appendChild(copyButton);
+                }
+            });
+            audio.addEventListener('error', (e) => {
+                const p = document.createElement('p');
+                p.innerHTML = `<strong>${song.name}</strong>: Error loading`;
+                resultsDiv.appendChild(p);
+                completed++;
+            });
+            audio.src = song.file;
+        });
+
+        function copyAsJson() {
+            const durations = {};
+            document.querySelectorAll('#results p').forEach(p => {
+                const text = p.textContent;
+                if (text.includes(':')) {
+                    const match = text.match(/([^:]+):\s*([0-9:]+)/);
+                    if (match) {
+                        durations[match[1].trim()] = match[2].trim();
+                    }
+                }
+            });
+            console.log(JSON.stringify(durations, null, 2));
+            alert('Check console for JSON');
+        }
+    </script>
+</body>
+</html>

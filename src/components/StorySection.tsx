@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function StorySection() {
     return (
         <section id="about" className="relative min-h-screen py-32 flex items-center justify-center bg-black border-t border-white/10">
             <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center flex-wrap">
 
-                {/* Left Side Abstract Art Placeholder */}
+                {/* Left Side Cover Art */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -15,10 +16,14 @@ export default function StorySection() {
                     transition={{ duration: 1 }}
                     className="relative w-full aspect-square bg-gradient-to-br from-brand-orange to-brand-dark rounded-xl overflow-hidden shadow-2xl"
                 >
-                    <div className="absolute inset-0 bg-grain mix-blend-overlay opacity-50"></div>
-                    {/* Decorative shapes to mimic the reference art */}
-                    <div className="absolute top-10 left-10 w-32 h-32 bg-brand-blue rounded-full mix-blend-screen blur-xl animate-pulse"></div>
-                    <div className="absolute bottom-20 right-20 w-48 h-48 bg-purple-600 rounded-full mix-blend-screen blur-2xl opacity-60"></div>
+                    <div className="absolute inset-0 bg-grain mix-blend-overlay z-10"></div>
+                    <Image
+                        src="/cover.png"
+                        alt="DRISHTIKON EP Cover"
+                        fill
+                        unoptimized
+                        className="object-cover z-0"
+                    />
                     <div className="absolute inset-0 border border-white/10 rounded-xl"></div>
                 </motion.div>
 

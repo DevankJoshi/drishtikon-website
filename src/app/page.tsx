@@ -38,6 +38,7 @@ function HomeContent() {
   const [showToast, setShowToast] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
   const [isPaywallOpen, setIsPaywallOpen] = useState(false);
+  const [selectedTrackIndex, setSelectedTrackIndex] = useState<number | undefined>();
   const playerRef = useRef<HTMLDivElement>(null);
 
   // On mount, check if returning from Stripe with ?success=true
@@ -107,9 +108,6 @@ function HomeContent() {
               transition={{ duration: 1, delay: 0.2 }}
               className="mb-6 flex flex-col items-center"
             >
-              <p className="text-brand-orange tracking-[0.3em] font-inter uppercase text-sm md:text-base font-bold mb-4">
-                Nouvelle Grotesquerie
-              </p>
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-anton tracking-wide uppercase leading-none cursor-default">
                 <span className="bg-gradient-to-r from-white via-blue-200 to-brand-blue text-gradient inline-block">
                   DRISHTIKON
@@ -160,9 +158,9 @@ function HomeContent() {
       </section>
 
       <StorySection />
-      <TracklistSection hasAccess={hasAccess} />
+      <TracklistSection hasAccess={hasAccess} onTrackSelect={setSelectedTrackIndex} />
       <div ref={playerRef}>
-        <PlayerSection />
+        <PlayerSection selectedTrackIndex={selectedTrackIndex} />
       </div>
       <MerchSection />
 

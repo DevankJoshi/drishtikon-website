@@ -12,28 +12,46 @@ import TiltWrapper from "./TiltWrapper";
 const TRACKS = [
     {
         id: 1,
-        title: "Ego Death",
+        title: "DRISHTIKON",
         artist: "Qafka",
-        src: "/songs/track1.mp3",
+        src: "/songs/01. DRISHTIKON.wav",
     },
     {
         id: 2,
-        title: "Track 2",
+        title: "100TAKGINN!! ft. Bellicose",
         artist: "Qafka",
-        src: "/songs/track2.mp3",
+        src: "/songs/02. 100TAKGINN!! ft. Bellicose.wav",
     },
     {
         id: 3,
-        title: "Track 3",
+        title: "HAADSE ft. Sarthak",
         artist: "Qafka",
-        src: "/songs/track3.mp3",
+        src: "/songs/03. HAADSE ft. Sarthak.wav",
     },
+    {
+        id: 4,
+        title: "GHAFLAT",
+        artist: "Qafka",
+        src: "/songs/04. GHAFLAT.wav",
+    },
+    {
+        id: 5,
+        title: "METAMORPHOSIS ft. Anoushka",
+        artist: "Qafka",
+        src: "/songs/05. METAMORPHOSIS ft. Anoushka.wav",
+    },
+    {
+        id: 6,
+        title: "Sarkashi ft. Jyeshtha (Bonus)",
+        artist: "Qafka",
+        src: "/songs/Sarkashi ft. Jyeshtha.wav",
+    }
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
-export default function PlayerSection() {
+export default function PlayerSection({ selectedTrackIndex }: { selectedTrackIndex?: number }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isLocked, setIsLocked] = useState(true);
+    const [isLocked, setIsLocked] = useState(false);
     const [isCheckingAccess, setIsCheckingAccess] = useState(true);
     const [volume, setVolume] = useState(0.8);
     const [isMuted, setIsMuted] = useState(false);
@@ -72,6 +90,14 @@ export default function PlayerSection() {
         };
         checkAccess();
     }, []);
+
+    // ── Handle track selection from tracklist ──────────────────────────────
+    useEffect(() => {
+        if (selectedTrackIndex !== undefined && !isLocked) {
+            setCurrentTrackIndex(selectedTrackIndex);
+            setIsPlaying(true);
+        }
+    }, [selectedTrackIndex, isLocked]);
 
     // ── Audio controls ───────────────────────────────────────────────────────
     useEffect(() => {
@@ -189,16 +215,13 @@ export default function PlayerSection() {
                             <div className="w-48 h-48 md:w-64 md:h-64 rounded-xl bg-gradient-to-br from-brand-orange to-brand-dark shadow-2xl relative overflow-hidden shrink-0 group">
                                 <div className="absolute inset-0 bg-grain mix-blend-overlay z-10"></div>
                                 <Image
-                                    src="/cover.jpg"
+                                    src="/cover.png"
                                     alt="Cover Art"
                                     fill
                                     unoptimized
                                     onError={(e) => { e.currentTarget.style.display = "none"; }}
                                     className="object-cover z-0 transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 flex items-center justify-center z-0">
-                                    <span className="font-anton text-6xl text-white/30 tracking-widest italic">Q</span>
-                                </div>
                             </div>
 
                             {/* ── Controls ───────────────────────────────────────── */}
