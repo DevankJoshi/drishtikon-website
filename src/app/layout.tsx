@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const anton = Anton({
@@ -30,6 +31,7 @@ export default function RootLayout({
       >
         <div className="bg-grain"></div>
         {children}
+        <Analytics />
       </body>
     </html>
   );
