@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PlayCircle, ShoppingBag, Eye, CheckCircle, X } from "lucide-react";
 import TiltWrapper from "@/components/TiltWrapper";
 import { MorphingText } from "@/components/ui/morphing-text";
+import AnimatedNumberCountdown from "@/components/ui/countdown-number";
 
 function SuccessToast({ onClose }: { onClose: () => void }) {
   return (
@@ -41,6 +42,7 @@ function HomeContent() {
   const [isPaywallOpen, setIsPaywallOpen] = useState(false);
   const [selectedTrackIndex, setSelectedTrackIndex] = useState<number | undefined>();
   const [paidCount, setPaidCount] = useState<number>(0);
+  const [countdownEnded, setCountdownEnded] = useState(false);
   const playerRef = useRef<HTMLDivElement>(null);
 
   // On mount, check if returning from Stripe with ?success=true
@@ -122,7 +124,35 @@ function HomeContent() {
         </div>
 
         <div className="container relative z-10 px-6 mx-auto flex flex-col items-center text-center">
-          {/* Counter Section */}
+          {/* Countdown Section */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="mb-8"
+          >
+            {!countdownEnded ? (
+              <AnimatedNumberCountdown
+                endDate={new Date("2026-04-09T00:00:00+05:30")}
+                onCountdownEnd={() => setCountdownEnded(true)}
+              />
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center"
+              >
+                <p className="text-2xl md:text-4xl font-anton tracking-widest text-brand-orange line-through opacity-50">
+                  0 people have unlocked this EP
+                </p>
+                <p className="text-lg md:text-2xl font-inter tracking-widest text-brand-orange mt-4">
+                  ITS OUT THERE JUST LOOK FOR IT OR MAYBE...
+                </p>
+              </motion.div>
+            )}
+          </motion.div>
+
+          {/* Paid Users Counter Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
