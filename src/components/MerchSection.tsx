@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function MerchSection() {
     return (
-        <section id="merch" className="relative py-48 bg-black min-h-screen flex items-center justify-center">
+        <section id="merch" className="relative py-48 bg-transparent min-h-screen flex items-center justify-center">
             <div className="container px-6 mx-auto text-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}

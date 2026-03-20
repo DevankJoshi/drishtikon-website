@@ -6,7 +6,7 @@ import { BorderRotate } from "@/components/ui/animated-gradient-border";
 
 export default function StorySection() {
     return (
-        <section id="about" className="relative min-h-screen py-32 flex items-center justify-center bg-black border-t border-white/10">
+        <section id="about" className="relative min-h-screen py-32 flex items-center justify-center bg-transparent border-t border-white/10">
             <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center flex-wrap">
 
                 {/* Left Side Cover Art with Animated Gradient Border */}

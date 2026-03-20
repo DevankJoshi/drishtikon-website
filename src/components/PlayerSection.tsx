@@ -157,7 +157,7 @@ export default function PlayerSection({ selectedTrackIndex }: { selectedTrackInd
     };
 
     return (
-        <section id="player" className="relative py-24 bg-[#0a0a0a] border-y border-white/5">
+        <section id="player" className="relative py-24 bg-transparent border-y border-white/5">
             <div className="container px-6 mx-auto max-w-5xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

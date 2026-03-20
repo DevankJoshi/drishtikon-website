@@ -117,12 +117,6 @@ function HomeContent() {
         id="hero"
         className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"
       >
-        {/* Abstract Background Waves */}
-        <div className="absolute inset-0 z-0 opacity-80 mix-blend-screen overflow-hidden">
-          <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-brand-orange blur-[120px] opacity-40 mix-blend-screen animate-pulse"></div>
-          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-brand-blue blur-[150px] opacity-30 mix-blend-screen" style={{ animation: "pulse 8s infinite alternate" }}></div>
-        </div>
-
         <div className="container relative z-10 px-6 mx-auto flex flex-col items-center text-center">
           {/* Countdown Section */}
           <motion.div

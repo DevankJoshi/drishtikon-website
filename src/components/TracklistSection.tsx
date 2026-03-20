@@ -19,7 +19,7 @@ interface TracklistSectionProps {
 
 export default function TracklistSection({ hasAccess = false, onTrackSelect }: TracklistSectionProps) {
     return (
-        <section id="tracklist" className="relative py-32 bg-[#050505] min-h-screen flex flex-col items-center border-t border-white/5">
+        <section id="tracklist" className="relative py-32 bg-transparent min-h-screen flex flex-col items-center border-t border-white/5">
             <div className="container px-6 mx-auto max-w-4xl">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

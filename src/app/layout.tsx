@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SeamlessWavesLayout } from "@/components/ui/seamless-waves-layout";
 import "./globals.css";
 
 const anton = Anton({
@@ -27,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${anton.variable} font-sans antialiased bg-black text-white relative`}
+        className={`${inter.variable} ${anton.variable} font-sans antialiased bg-brand-dark text-white relative overflow-x-hidden`}
       >
         <div className="bg-grain"></div>
-        {children}
+        <SeamlessWavesLayout>
+          {children}
+        </SeamlessWavesLayout>
         <Analytics />
       </body>
     </html>
