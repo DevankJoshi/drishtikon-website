@@ -1,13 +1,26 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    // @ts-expect-error - ignore stripe version mismatch
-    apiVersion: "2025-02-24.acacia",
-});
+let stripe: Stripe | null = null;
+
+// Only initialize Stripe if keys are available
+if (process.env.STRIPE_SECRET_KEY) {
+    stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+        // @ts-expect-error - ignore stripe version mismatch
+        apiVersion: "2025-02-24.acacia",
+    });
+}
 
 export async function POST(req: Request) {
     try {
+        // Check if Stripe is configured
+        if (!stripe) {
+            return NextResponse.json(
+                { error: "Payment gateway is not configured yet. Please try again later." },
+                { status: 503 }
+            );
+        }
+
         const body = await req.json();
         const { amount, email } = body;
 

@@ -2,10 +2,15 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    // @ts-expect-error - ignore stripe version mismatch
-    apiVersion: "2025-02-24.acacia",
-});
+let stripe: Stripe | null = null;
+
+// Only initialize Stripe if keys are available
+if (process.env.STRIPE_SECRET_KEY) {
+    stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+        // @ts-expect-error - ignore stripe version mismatch
+        apiVersion: "2025-02-24.acacia",
+    });
+}
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -13,6 +18,12 @@ const supabase = createClient(
 );
 
 export async function POST(req: Request) {
+    // Check if Stripe is configured
+    if (!stripe) {
+        console.warn("Stripe not configured - webhook ignored");
+        return NextResponse.json({ received: true });
+    }
+
     const body = await req.text();
     const sig = req.headers.get("stripe-signature")!;
 
