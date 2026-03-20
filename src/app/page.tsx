@@ -169,7 +169,7 @@ function HomeContent() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="mb-6 flex flex-col items-center"
+              className="flex flex-col items-center"
             >
               <MorphingText
                 texts={[
@@ -185,9 +185,9 @@ function HomeContent() {
                   "Точка зрения",
                   "يقترب"
                 ]}
-                className="h-24 text-6xl md:text-8xl lg:text-9xl bg-gradient-to-r from-white via-blue-200 to-brand-blue text-gradient inline-block cursor-default"
+                className="h-32 md:h-48 lg:h-64 text-6xl md:text-8xl lg:text-9xl font-anton tracking-wide uppercase leading-tight cursor-default overflow-visible"
               />
-              <p className="mt-6 text-lg md:text-xl font-inter tracking-widest max-w-2xl mx-auto text-gray-300">
+              <p className="mt-12 md:mt-16 text-lg md:text-xl font-inter tracking-widest max-w-2xl mx-auto text-gray-300">
                 A LIMITED EARLY-ACCESS RELEASE. PAY WHAT YOU WANT, UNLOCK THE EP, AND BECOME PART OF THE MOVEMENT.
               </p>
             </motion.div>
