@@ -11,6 +11,7 @@ import PaywallModal from "@/components/PaywallModal";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayCircle, ShoppingBag, Eye, CheckCircle, X } from "lucide-react";
 import TiltWrapper from "@/components/TiltWrapper";
+import { MorphingText } from "@/components/ui/morphing-text";
 
 function SuccessToast({ onClose }: { onClose: () => void }) {
   return (
@@ -140,11 +141,22 @@ function HomeContent() {
               transition={{ duration: 1, delay: 0.2 }}
               className="mb-6 flex flex-col items-center"
             >
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-anton tracking-wide uppercase leading-none cursor-default">
-                <span className="bg-gradient-to-r from-white via-blue-200 to-brand-blue text-gradient inline-block">
-                  DRISHTIKON
-                </span>
-              </h1>
+              <MorphingText
+                texts={[
+                  "DRISHTIKON",
+                  "दृष्टिकोण",
+                  "نقطہ نظر",
+                  "ਪਹੁੰਚ",
+                  "અભિગમ",
+                  "ಅಪ್ರೋಚ್",
+                  "視点",
+                  "Acercarse",
+                  "Perspektive",
+                  "Точка зрения",
+                  "يقترب"
+                ]}
+                className="h-24 text-6xl md:text-8xl lg:text-9xl bg-gradient-to-r from-white via-blue-200 to-brand-blue text-gradient inline-block cursor-default"
+              />
               <p className="mt-6 text-lg md:text-xl font-inter tracking-widest max-w-2xl mx-auto text-gray-300">
                 A LIMITED EARLY-ACCESS RELEASE. PAY WHAT YOU WANT, UNLOCK THE EP, AND BECOME PART OF THE MOVEMENT.
               </p>
