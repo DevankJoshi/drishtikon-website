@@ -32,7 +32,7 @@ export function SeamlessWavesLayout({
             </div>
 
             {/* Blur overlay for better text clarity */}
-            <div className="fixed inset-0 z-[5] pointer-events-none backdrop-blur-[6px]"></div>
+            <div className="fixed inset-0 z-[5] pointer-events-none backdrop-blur-[2px]"></div>
 
             {/* Content layer - scrolls over waves */}
             <div className="relative z-10 w-full">
