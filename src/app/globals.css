@@ -8,24 +8,24 @@
   font-display: swap;
 }
 
-@theme {
-  --color-brand-orange: #d28723;
-  --color-brand-blue: #0055ff;
-  --color-brand-dark: #0a0a0a;
-}
-
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --font-anton: 'NouvelleGrotesquerie', 'Anton', sans-serif;
+  --color-brand-orange: #d28723;
+  --color-brand-blue: #0055ff;
+  --color-brand-dark: #0a0a0a;
+  --font-nouvelle: 'NouvelleGrotesquerie', system-ui, -apple-system, sans-serif;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'NouvelleGrotesquerie', Arial, Helvetica, sans-serif;
+  font-family: var(--font-nouvelle);
   overflow-x: hidden;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -41,7 +41,7 @@ button,
 input,
 label,
 li {
-  font-family: 'NouvelleGrotesquerie', Arial, Helvetica, sans-serif;
+  font-family: var(--font-nouvelle);
 }
 
 @layer utilities {
