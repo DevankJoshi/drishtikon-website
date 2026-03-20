@@ -27,7 +27,7 @@ export default function TracklistSection({ hasAccess = false, onTrackSelect }: T
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-5xl md:text-7xl font-anton uppercase tracking-widest mb-6">Tracklist</h2>
+                    <h2 className="text-5xl md:text-7xl font-anton uppercase tracking-widest mb-6 font-bold text-white/95">Tracklist</h2>
                     {!hasAccess && (
                         <p className="text-brand-orange uppercase tracking-widest font-bold text-sm bg-brand-orange/10 py-2 px-6 rounded-full inline-block border border-brand-orange/20">
                             Purchase Early Access to unlock the full EP

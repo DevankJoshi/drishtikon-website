@@ -5,11 +5,10 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import StorySection from "@/components/StorySection";
 import TracklistSection from "@/components/TracklistSection";
-import MerchSection from "@/components/MerchSection";
 import PlayerSection from "@/components/PlayerSection";
 import PaywallModal from "@/components/PaywallModal";
 import { motion, AnimatePresence } from "framer-motion";
-import { PlayCircle, ShoppingBag, Eye, CheckCircle, X } from "lucide-react";
+import { PlayCircle, Eye, CheckCircle, X } from "lucide-react";
 import TiltWrapper from "@/components/TiltWrapper";
 import { MorphingText } from "@/components/ui/morphing-text";
 import AnimatedNumberCountdown from "@/components/ui/countdown-number";
@@ -203,10 +202,6 @@ function HomeContent() {
                   Full Access Unlocked
                 </div>
               )}
-              <button className="w-full md:w-auto flex items-center justify-center gap-3 bg-transparent border-2 border-white/30 text-white/60 px-8 py-4 rounded-full font-bold uppercase tracking-widest whitespace-nowrap cursor-not-allowed">
-                <ShoppingBag />
-                Merch (Coming Soon)
-              </button>
             </motion.div>
           </TiltWrapper>
         </div>
@@ -217,7 +212,6 @@ function HomeContent() {
       <div ref={playerRef}>
         <PlayerSection selectedTrackIndex={selectedTrackIndex} />
       </div>
-      <MerchSection />
 
       {/* Global Paywall Modal (for hero CTA) */}
       <PaywallModal isOpen={isPaywallOpen} onClose={() => setIsPaywallOpen(false)} />

@@ -165,7 +165,7 @@ export default function PlayerSection({ selectedTrackIndex }: { selectedTrackInd
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-anton uppercase tracking-widest text-brand-blue">The Experience</h2>
+                    <h2 className="text-4xl md:text-5xl font-anton uppercase tracking-widest text-brand-blue font-bold text-white/95">The Experience</h2>
                 </motion.div>
 
                 <TiltWrapper intensity={0.5}>
@@ -182,13 +182,13 @@ export default function PlayerSection({ selectedTrackIndex }: { selectedTrackInd
                                 {isCheckingAccess ? (
                                     <>
                                         <Loader2 size={40} className="text-brand-orange mb-4 animate-spin" />
-                                        <p className="text-gray-400 font-inter text-sm">Checking access…</p>
+                                        <p className="text-white/80 font-inter text-sm">Checking access…</p>
                                     </>
                                 ) : (
                                     <>
                                         <Lock size={48} className="text-brand-orange mb-6" />
-                                        <h3 className="text-2xl font-anton uppercase tracking-widest mb-2">Player Locked</h3>
-                                        <p className="text-gray-400 font-inter text-sm mb-6 max-w-sm text-center">
+                                        <h3 className="text-2xl font-anton uppercase tracking-widest mb-2 font-bold">Player Locked</h3>
+                                        <p className="text-white/75 font-inter text-sm mb-6 max-w-sm text-center">
                                             Pay once, stream forever. Unlock the full DRISHTIKON EP experience.
                                         </p>
                                         <button
@@ -227,7 +227,7 @@ export default function PlayerSection({ selectedTrackIndex }: { selectedTrackInd
                             {/* ── Controls ───────────────────────────────────────── */}
                             <div className="w-full flex justify-center flex-col">
                                 <div className="mb-2">
-                                    <h4 className="text-2xl font-bold font-inter text-white">{currentTrack.title}</h4>
+                                    <h4 className="text-2xl font-bold font-inter text-white/95">{currentTrack.title}</h4>
                                     <p className="text-brand-orange uppercase tracking-widest text-sm font-bold mt-1">{currentTrack.artist}</p>
                                 </div>
 

@@ -25,6 +25,7 @@ body {
   color: var(--foreground);
   font-family: 'NouvelleGrotesquerie', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 h1,
