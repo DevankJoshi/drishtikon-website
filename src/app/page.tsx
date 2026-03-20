@@ -135,10 +135,10 @@ function HomeContent() {
                 animate={{ opacity: 1 }}
                 className="text-center"
               >
-                <p className="text-2xl md:text-4xl font-anton tracking-widest text-brand-orange line-through opacity-50">
+                <p className="text-2xl md:text-4xl font-anton tracking-widest text-white/95 line-through opacity-70">
                   0 people have unlocked this EP
                 </p>
-                <p className="text-lg md:text-2xl font-inter tracking-widest text-brand-orange mt-4">
+                <p className="text-lg md:text-2xl font-inter tracking-widest text-white/85 mt-4">
                   ITS OUT THERE JUST LOOK FOR IT OR MAYBE...
                 </p>
               </motion.div>

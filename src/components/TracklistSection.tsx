@@ -48,7 +48,7 @@ export default function TracklistSection({ hasAccess = false, onTrackSelect }: T
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className={`group flex items-center justify-between p-4 md:p-6 bg-white/5 border border-white/10 rounded-xl transition-colors ${hasAccess ? "hover:bg-white/10 cursor-pointer" : "cursor-not-allowed"}`}
+                            className={`group flex items-center justify-between p-4 md:p-6 bg-white/10 border border-white/20 rounded-xl transition-colors ${hasAccess ? "hover:bg-white/15 cursor-pointer" : "cursor-not-allowed"}`}
                             onClick={() => hasAccess && onTrackSelect?.(i)}
                         >
                             <div className="flex items-center gap-6">

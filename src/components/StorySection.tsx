@@ -56,7 +56,7 @@ export default function StorySection() {
                         <p className="italic border-l-4 border-brand-orange pl-6 text-white/95 font-medium text-xl">
                             &quot;Drishtikon is the psychological arc of a man fueled by ego, mistaking it for power and direction. As the story progresses, he is slowly dismantled, forced into introspection, and pushed toward an ego death. What remains is a renewed perspective - one that allows him to finally recognize his true path and purpose.&quot;
                         </p>
-                        <p className="font-bold text-brand-orange text-right pr-6">&mdash; Qafka</p>
+                        <p className="font-bold text-white/95 text-right pr-6">&mdash; Qafka</p>
                     </div>
                 </motion.div>
             </div>
