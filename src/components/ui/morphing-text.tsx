@@ -100,40 +100,43 @@ const Texts: React.FC<Pick<MorphingTextProps, "texts">> = ({ texts }) => {
       <span
         className="absolute inset-x-0 top-0 m-auto inline-block w-full"
         ref={text1Ref}
-        style={{
-          background: "linear-gradient(to right, white, #60a5fa, #0055ff)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          color: "transparent"
-        }}
       />
       <span
         className="absolute inset-x-0 top-0 m-auto inline-block w-full"
         ref={text2Ref}
-        style={{
-          background: "linear-gradient(to right, white, #60a5fa, #0055ff)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          color: "transparent"
-        }}
       />
     </>
   );
 };
 
-const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => {
-  return (
-    <div
-      className={cn(
-        "relative mx-auto w-full text-center font-sans font-bold leading-none",
-        className,
-      )}
-    >
-      <Texts texts={texts} />
-    </div>
-  );
-};
+const SvgFilters: React.FC = () => (
+  <svg id="filters" className="hidden" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <filter id="threshold">
+        <feColorMatrix
+          in="SourceGraphic"
+          type="matrix"
+          values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                  0 0 0 255 -140"
+        />
+      </filter>
+    </defs>
+  </svg>
+);
+
+const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => (
+  <div
+    className={cn(
+      "relative mx-auto w-full text-center font-sans font-bold leading-none [filter:url(#threshold)_blur(0.6px)]",
+      className,
+    )}
+  >
+    <Texts texts={texts} />
+    <SvgFilters />
+  </div>
+);
 
 export { MorphingText };
+
