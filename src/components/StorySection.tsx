@@ -2,29 +2,45 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { BorderRotate } from "@/components/ui/animated-gradient-border";
 
 export default function StorySection() {
     return (
         <section id="about" className="relative min-h-screen py-32 flex items-center justify-center bg-black border-t border-white/10">
             <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center flex-wrap">
 
-                {/* Left Side Cover Art */}
+                {/* Left Side Cover Art with Animated Gradient Border */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1 }}
-                    className="relative w-full aspect-square bg-gradient-to-br from-brand-orange to-brand-dark rounded-xl overflow-hidden shadow-2xl"
+                    className="relative w-full max-w-sm mx-auto"
                 >
-                    <div className="absolute inset-0 bg-grain mix-blend-overlay z-10"></div>
-                    <Image
-                        src="/cover.png"
-                        alt="DRISHTIKON EP Cover"
-                        fill
-                        unoptimized
-                        className="object-cover z-0"
-                    />
-                    <div className="absolute inset-0 border border-white/10 rounded-xl"></div>
+                    <BorderRotate
+                        animationMode="auto-rotate"
+                        animationSpeed={4}
+                        gradientColors={{
+                            primary: '#d28723',
+                            secondary: '#f9de90',
+                            accent: '#0055ff'
+                        }}
+                        backgroundColor="#0a0a0a"
+                        borderWidth={2}
+                        borderRadius={16}
+                        className="aspect-square overflow-hidden"
+                    >
+                        <div className="relative w-full h-full bg-gradient-to-br from-brand-orange to-brand-dark">
+                            <div className="absolute inset-0 bg-grain mix-blend-overlay z-10"></div>
+                            <Image
+                                src="/cover.png"
+                                alt="DRISHTIKON EP Cover"
+                                fill
+                                unoptimized
+                                className="object-cover z-0"
+                            />
+                        </div>
+                    </BorderRotate>
                 </motion.div>
 
                 {/* Right Side Story Text */}
