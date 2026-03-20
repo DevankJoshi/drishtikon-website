@@ -17,18 +17,37 @@ export async function GET(req: Request) {
         //     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         // }
 
-        // Get all paid users from access_grants table
-        const { data: paidUsers, error } = await supabase
-            .from("access_grants")
-            .select("email, created_at")
-            .order("created_at", { ascending: false });
+        // Get counter from payment_counter table (optimized for real-time display)
+        const { data: counterData, error: counterError } = await supabase
+            .from("payment_counter")
+            .select("total_paid_users")
+            .eq("id", 1)
+            .maybeSingle();
 
-        if (error) {
-            console.error("Supabase query error:", error);
+        if (counterError) {
+            console.error("Supabase counter query error:", counterError);
             return NextResponse.json({ error: "Database error" }, { status: 500 });
         }
 
-        const totalCount = paidUsers?.length || 0;
+        const totalCount = counterData?.total_paid_users || 0;
+
+        // Get recent paid users for detailed list
+        const { data: paidUsers, error: usersError } = await supabase
+            .from("access_grants")
+            .select("email, created_at")
+            .order("created_at", { ascending: false })
+            .limit(100); // Limit to last 100 for performance
+
+        if (usersError) {
+            console.error("Supabase users query error:", usersError);
+            // Still return the counter even if users list fails
+            return NextResponse.json({
+                success: true,
+                totalPaidUsers: totalCount,
+                paidEmails: [],
+                message: `${totalCount} user(s) have purchased access to DRISHTIKON EP`,
+            });
+        }
 
         return NextResponse.json({
             success: true,

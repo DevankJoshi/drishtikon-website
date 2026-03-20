@@ -39,6 +39,7 @@ function HomeContent() {
   const [hasAccess, setHasAccess] = useState(false);
   const [isPaywallOpen, setIsPaywallOpen] = useState(false);
   const [selectedTrackIndex, setSelectedTrackIndex] = useState<number | undefined>();
+  const [paidCount, setPaidCount] = useState<number>(0);
   const playerRef = useRef<HTMLDivElement>(null);
 
   // On mount, check if returning from Stripe with ?success=true
@@ -76,6 +77,25 @@ function HomeContent() {
     }
   }, [searchParams, router]);
 
+  // Fetch paid users counter
+  useEffect(() => {
+    const fetchCounter = async () => {
+      try {
+        const res = await fetch("/api/paid-users");
+        const data = await res.json();
+        if (data.totalPaidUsers) {
+          setPaidCount(data.totalPaidUsers);
+        }
+      } catch {
+        console.error("Failed to fetch paid users count");
+      }
+    };
+    fetchCounter();
+    // Refresh every 10 seconds
+    const interval = setInterval(fetchCounter, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToPlayer = () => {
     document.getElementById("player")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -101,6 +121,18 @@ function HomeContent() {
         </div>
 
         <div className="container relative z-10 px-6 mx-auto flex flex-col items-center text-center">
+          {/* Counter Section */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-12 inline-block bg-brand-orange/10 border border-brand-orange/30 rounded-full px-8 py-3"
+          >
+            <p className="text-sm md:text-base font-inter tracking-widest text-brand-orange">
+              {paidCount.toLocaleString()} people have unlocked this EP
+            </p>
+          </motion.div>
+
           <TiltWrapper intensity={1.5}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
