@@ -98,44 +98,46 @@ const Texts: React.FC<Pick<MorphingTextProps, "texts">> = ({ texts }) => {
   return (
     <>
       <span
-        className="absolute inset-x-0 top-0 m-auto inline-block w-full"
+        className="absolute inset-x-0 top-0 m-auto inline-block w-full bg-gradient-to-r from-white via-blue-200 to-brand-blue bg-clip-text text-transparent"
         ref={text1Ref}
       />
       <span
-        className="absolute inset-x-0 top-0 m-auto inline-block w-full"
+        className="absolute inset-x-0 top-0 m-auto inline-block w-full bg-gradient-to-r from-white via-blue-200 to-brand-blue bg-clip-text text-transparent"
         ref={text2Ref}
       />
     </>
   );
 };
 
-const SvgFilters: React.FC = () => (
-  <svg id="filters" className="hidden" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <filter id="threshold">
-        <feColorMatrix
-          in="SourceGraphic"
-          type="matrix"
-          values="1 0 0 0 0
-                  0 1 0 0 0
-                  0 0 1 0 0
-                  0 0 0 255 -140"
-        />
-      </filter>
-    </defs>
-  </svg>
-);
-
-const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => (
-  <div
-    className={cn(
-      "relative mx-auto w-full text-center font-sans font-bold leading-none [filter:url(#threshold)_blur(0.6px)]",
-      className,
-    )}
-  >
-    <Texts texts={texts} />
-    <SvgFilters />
-  </div>
-);
+const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => {
+  // Generate a unique ID for this instance to avoid conflicts
+  const filterId = `morphing-threshold-${Math.random().toString(36).substr(2, 9)}`;
+  
+  return (
+    <div
+      className={cn(
+        "relative mx-auto w-full text-center font-sans font-bold leading-none",
+        className,
+      )}
+      style={{ filter: `url(#${filterId}) blur(0.6px)` }}
+    >
+      <Texts texts={texts} />
+      <svg className="hidden" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <filter id={filterId}>
+            <feColorMatrix
+              in="SourceGraphic"
+              type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 255 -140"
+            />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  );
+};
 
 export { MorphingText };
