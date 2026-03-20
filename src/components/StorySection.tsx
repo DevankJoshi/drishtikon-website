@@ -35,10 +35,32 @@ export default function StorySection() {
                     transition={{ duration: 1, delay: 0.2 }}
                     className="flex flex-col gap-8 justify-center h-full"
                 >
-                    <h2 className="text-5xl md:text-7xl font-anton uppercase tracking-wide text-brand-blue drop-shadow-lg">
-                        What You <br /> Receive
-                    </h2>
+                    {/* What You Receive Section - Smaller */}
+                    <div className="bg-brand-orange/5 border border-brand-orange/20 rounded-lg p-6">
+                        <h3 className="text-2xl md:text-3xl font-anton uppercase tracking-wide text-brand-orange mb-4">
+                            What You Receive
+                        </h3>
+                        <ul className="space-y-3 text-sm tracking-wide font-inter text-gray-300">
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"></div>
+                                A private listening link to DRISHTIKON - the EP
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"></div>
+                                Exclusive documentation explaining the project
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"></div>
+                                Wallpapers for desktop and mobile devices
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"></div>
+                                Access to Qafka&apos;s Discord server
+                            </li>
+                        </ul>
+                    </div>
 
+                    {/* Story Quote Section */}
                     <div className="space-y-6 text-gray-300 font-inter text-lg leading-relaxed max-w-xl pr-8">
                         <p className="italic border-l-2 border-brand-orange pl-6">
                             &quot;Drishtikon is the psychological arc of a man fueled by ego, mistaking it for power and direction. As the story progresses, he is slowly dismantled, forced into introspection, and pushed toward an ego death.&quot;
@@ -48,25 +70,6 @@ export default function StorySection() {
                         </p>
                         <p className="font-bold text-white">&mdash; Qafka</p>
                     </div>
-
-                    <ul className="mt-8 space-y-4 text-sm tracking-wide font-inter text-gray-400">
-                        <li className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
-                            A private listening link to DRISHTIKON - the EP
-                        </li>
-                        <li className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
-                            Exclusive documentation explaining the project
-                        </li>
-                        <li className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
-                            Wallpapers for desktop and mobile devices
-                        </li>
-                        <li className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
-                            Access to Qafka&apos;s Discord server
-                        </li>
-                    </ul>
                 </motion.div>
             </div>
         </section>
