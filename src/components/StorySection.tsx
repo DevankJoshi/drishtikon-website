@@ -15,7 +15,7 @@ export default function StorySection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1 }}
-                    className="relative w-full max-w-sm mx-auto"
+                    className="relative w-full aspect-square"
                 >
                     <BorderRotate
                         animationMode="auto-rotate"
